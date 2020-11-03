@@ -1,8 +1,8 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class Statement implements GeneralModelInterface {
+public class Statement implements IGeneralModel {
     private Integer id;
     private String description;
     private String creationDate;
@@ -13,9 +13,9 @@ public class Statement implements GeneralModelInterface {
     private Integer responsibleEmployeeId;
     private Integer typeOfStatementId;
 
-    public Statement(Integer id, String description, Integer initiatingEmployeeId, Integer equipmentLocationId,
-                     Integer statusId,
-                     Integer priorityId, Integer responsibleEmployeeId, Integer typeOfStatementId) {
+    public Statement(final Integer id, final String description, final Integer initiatingEmployeeId,
+                     final Integer equipmentLocationId, final Integer statusId, final Integer priorityId,
+                     final Integer responsibleEmployeeId, final Integer typeOfStatementId) {
 
         java.util.Date dt = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -31,7 +31,9 @@ public class Statement implements GeneralModelInterface {
         this.typeOfStatementId = typeOfStatementId;
     }
 
-    public Statement(Integer id, String description, String creationDate, Integer initiatingEmployeeId, Integer equipmentLocationId, Integer statusId, Integer priorityId, Integer responsibleEmployeeId, Integer typeOfStatementId) {
+    public Statement(final Integer id, final String description, final String creationDate,
+                     final Integer initiatingEmployeeId, final Integer equipmentLocationId, final Integer statusId,
+                     final Integer priorityId, final Integer responsibleEmployeeId, final Integer typeOfStatementId) {
         this.id = id;
         this.description = description;
         this.creationDate = creationDate;
@@ -43,91 +45,91 @@ public class Statement implements GeneralModelInterface {
         this.typeOfStatementId = typeOfStatementId;
     }
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public final void setDescription(final String description) {
         this.description = description;
     }
 
-    public String getCreationDate() {
+    public final String getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(String creationDate) {
+    public final void setCreationDate(final String creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Integer getInitiatingEmployeeId() {
+    public final Integer getInitiatingEmployeeId() {
         return initiatingEmployeeId;
     }
 
-    public void setInitiatingEmployeeId(Integer initiatingEmployeeId) {
+    public final void setInitiatingEmployeeId(final Integer initiatingEmployeeId) {
         this.initiatingEmployeeId = initiatingEmployeeId;
     }
 
-    public Integer getEquipmentLocationId() {
+    public final Integer getEquipmentLocationId() {
         return equipmentLocationId;
     }
 
-    public void setEquipmentLocationId(Integer equipmentLocationId) {
+    public final void setEquipmentLocationId(final Integer equipmentLocationId) {
         this.equipmentLocationId = equipmentLocationId;
     }
 
-    public Integer getStatusId() {
+    public final Integer getStatusId() {
         return statusId;
     }
 
-    public void setStatusId(Integer statusId) {
+    public final void setStatusId(final Integer statusId) {
         this.statusId = statusId;
     }
 
-    public Integer getPriorityId() {
+    public final Integer getPriorityId() {
         return priorityId;
     }
 
-    public void setPriorityId(Integer priorityId) {
+    public final void setPriorityId(final Integer priorityId) {
         this.priorityId = priorityId;
     }
 
-    public Integer getResponsibleEmployeeId() {
+    public final Integer getResponsibleEmployeeId() {
         return responsibleEmployeeId;
     }
 
-    public void setResponsibleEmployeeId(Integer responsibleEmployeeId) {
+    public final void setResponsibleEmployeeId(final Integer responsibleEmployeeId) {
         this.responsibleEmployeeId = responsibleEmployeeId;
     }
 
-    public Integer getTypeOfStatementId() {
+    public final Integer getTypeOfStatementId() {
         return typeOfStatementId;
     }
 
-    public void setTypeOfStatementId(Integer typeOfStatementId) {
+    public final void setTypeOfStatementId(final Integer typeOfStatementId) {
         this.typeOfStatementId = typeOfStatementId;
     }
 
     @Override
-    public String toString() {
-        return "Statement{" +
-                "id=" + id +
-                ", description='" + description + '\'' +
-                ", creationDate='" + creationDate + '\'' +
-                ", initiatingEmployeeId=" + initiatingEmployeeId +
-                ", equipmentLocationId=" + equipmentLocationId +
-                ", statusId=" + statusId +
-                ", priorityId=" + priorityId +
-                ", responsibleEmployeeId=" + responsibleEmployeeId +
-                ", typeOfStatementId=" + typeOfStatementId +
-                '}';
+    public final String toString() {
+        return "Statement{"
+                + "id=" + id
+                + ", description='" + description + '\''
+                + ", creationDate='" + creationDate + '\''
+                + ", initiatingEmployeeId=" + initiatingEmployeeId
+                + ", equipmentLocationId=" + equipmentLocationId
+                + ", statusId=" + statusId
+                + ", priorityId=" + priorityId
+                + ", responsibleEmployeeId=" + responsibleEmployeeId
+                + ", typeOfStatementId=" + typeOfStatementId
+                + '}';
     }
 }
 

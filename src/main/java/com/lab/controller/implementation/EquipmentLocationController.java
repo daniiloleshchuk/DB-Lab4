@@ -6,10 +6,10 @@ import com.lab.service.implementation.GeneralService;
 
 public class EquipmentLocationController extends GeneralController<EquipmentLocation> {
 
-    public static EquipmentLocationService equipmentLocationService = new EquipmentLocationService();
+    private static final EquipmentLocationService EQUIPMENT_LOCATION_SERVICE = new EquipmentLocationService();
 
     @Override
-    public GeneralService<EquipmentLocation> getService() {
-        return equipmentLocationService;
+    public final GeneralService<EquipmentLocation> getService() {
+        return EQUIPMENT_LOCATION_SERVICE;
     }
 }

@@ -1,15 +1,15 @@
 package com.lab.service.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.DAO.implementation.StatementDAO;
 import com.lab.model.implementation.Statement;
 
 public class StatementService extends GeneralService<Statement> {
 
-    public GeneralDAOInterface<Statement, Integer> statementDAO = new StatementDAO();
+    private final IGeneralDAO<Statement, Integer> statementDAO = new StatementDAO();
 
     @Override
-    public GeneralDAOInterface<Statement, Integer> getDAO() {
+    public final IGeneralDAO<Statement, Integer> getDAO() {
         return statementDAO;
     }
 }

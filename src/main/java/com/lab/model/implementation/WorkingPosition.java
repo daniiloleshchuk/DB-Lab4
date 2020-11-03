@@ -1,29 +1,37 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class WorkingPosition implements GeneralModelInterface {
+public class WorkingPosition implements IGeneralModel {
     private Integer id;
     private String name;
 
-    public Integer getId() {
+    public WorkingPosition(final Integer id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public WorkingPosition(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    @Override
+    public final String toString() {
+        return "WorkingPosition{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 }

@@ -1,8 +1,6 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
-import com.lab.model.implementation.Employee;
-import com.lab.model.implementation.ResponsibleEmployee;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.Statement;
 import com.lab.persistance.ConnectionManager;
 
@@ -13,20 +11,20 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StatementDAO implements GeneralDAOInterface<Statement, Integer> {
+public class StatementDAO implements IGeneralDAO<Statement, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.statement";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.statement WHERE id=?";
-    private static final String CREATE = "INSERT oleshchuk_db.statement (id, description, creation_date, " +
-            "initiating_employee_id, equipment_location_id, status_id, priority_id, responsible_employee_id, " +
-            "type_of_statement_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE = "UPDATE oleshchuk_db.statement SET description=?, creation_date=?, " +
-            "initiating_employee_id=?, equipment_location_id=?, status_id=?, priority_id=?, " +
-            "responsible_employee_id=?, type_of_statement_id=? WHERE id=?";
+    private static final String CREATE = "INSERT oleshchuk_db.statement (id, description, creation_date, "
+            + "initiating_employee_id, equipment_location_id, status_id, priority_id, responsible_employee_id, "
+            + "type_of_statement_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE oleshchuk_db.statement SET description=?, creation_date=?, "
+            + "initiating_employee_id=?, equipment_location_id=?, status_id=?, priority_id=?, "
+            + "responsible_employee_id=?, type_of_statement_id=? WHERE id=?";
     private static final String DELETE = "DELETE FROM oleshchuk_db.statement WHERE id=?";
 
     @Override
-    public List<Statement> getAll() throws SQLException {
+    public final List<Statement> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<Statement> statements = new LinkedList<>();
 
@@ -51,7 +49,7 @@ public class StatementDAO implements GeneralDAOInterface<Statement, Integer> {
     }
 
     @Override
-    public Statement getById(Integer id) throws SQLException {
+    public final Statement getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         Statement statement = null;
 
@@ -78,7 +76,7 @@ public class StatementDAO implements GeneralDAOInterface<Statement, Integer> {
     }
 
     @Override
-    public int create(Statement entity) throws SQLException {
+    public final int create(final Statement entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -95,7 +93,7 @@ public class StatementDAO implements GeneralDAOInterface<Statement, Integer> {
     }
 
     @Override
-    public int update(Statement entity) throws SQLException {
+    public final int update(final Statement entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setString(1, entity.getDescription());
@@ -112,7 +110,7 @@ public class StatementDAO implements GeneralDAOInterface<Statement, Integer> {
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);

@@ -6,10 +6,10 @@ import com.lab.service.implementation.PriorityService;
 
 public class PriorityController extends GeneralController<Priority> {
 
-    public static PriorityService priorityService = new PriorityService();
+    private static final PriorityService PRIORITY_SERVICE = new PriorityService();
 
     @Override
-    public GeneralService<Priority> getService() {
-        return priorityService;
+    public final GeneralService<Priority> getService() {
+        return PRIORITY_SERVICE;
     }
 }

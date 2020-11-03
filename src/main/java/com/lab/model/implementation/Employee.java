@@ -1,59 +1,59 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class Employee implements GeneralModelInterface {
+public class Employee implements IGeneralModel {
     private Integer id;
     private String name;
     private String surname;
     private Integer workingPositionId;
 
-    public Employee(Integer id, String name, String surname, Integer workingPositionId) {
+    public Employee(final Integer id, final String name, final String surname, final Integer workingPositionId) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.workingPositionId = workingPositionId;
     }
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public String getSurname() {
+    public final String getSurname() {
         return surname;
     }
 
-    public void setSurname(String surname) {
+    public final void setSurname(final String surname) {
         this.surname = surname;
     }
 
-    public Integer getWorkingPositionId() {
+    public final Integer getWorkingPositionId() {
         return workingPositionId;
     }
 
-    public void setWorkingPositionId(Integer workingPositionId) {
+    public final void setWorkingPositionId(final Integer workingPositionId) {
         this.workingPositionId = workingPositionId;
     }
 
     @Override
-    public String toString() {
-        return "Employee{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", workingPositionId='" + workingPositionId + '\'' +
-                '}';
+    public final String toString() {
+        return "Employee{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + ", surname='" + surname + '\''
+                + ", workingPositionId='" + workingPositionId + '\''
+                + '}';
     }
 }

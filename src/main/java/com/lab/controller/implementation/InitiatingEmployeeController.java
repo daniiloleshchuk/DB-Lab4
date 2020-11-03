@@ -6,10 +6,10 @@ import com.lab.service.implementation.InitiatingEmployeeService;
 
 public class InitiatingEmployeeController extends GeneralController<InitiatingEmployee> {
 
-    public static InitiatingEmployeeService initiatingEmployeeService = new InitiatingEmployeeService();
+    private static final InitiatingEmployeeService INITIATING_EMPLOYEE_SERVICE = new InitiatingEmployeeService();
 
     @Override
-    public GeneralService<InitiatingEmployee> getService() {
-        return initiatingEmployeeService;
+    public final GeneralService<InitiatingEmployee> getService() {
+        return INITIATING_EMPLOYEE_SERVICE;
     }
 }

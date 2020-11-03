@@ -1,38 +1,38 @@
 package com.lab.service.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
-import com.lab.service.GeneralServiceInterface;
+import com.lab.DAO.IGeneralDAO;
+import com.lab.service.IGeneralService;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public abstract class GeneralService<T> implements GeneralServiceInterface<T> {
+public abstract class GeneralService<T> implements IGeneralService<T> {
 
     @Override
-    public abstract GeneralDAOInterface<T, Integer> getDAO();
+    public abstract IGeneralDAO<T, Integer> getDAO();
 
     @Override
-    public List<T> getAll() throws SQLException {
+    public final List<T> getAll() throws SQLException {
         return getDAO().getAll();
     }
 
     @Override
-    public T getById(Integer id) throws SQLException {
+    public final T getById(final Integer id) throws SQLException {
         return getDAO().getById(id);
     }
 
     @Override
-    public int create(T entity) throws SQLException {
+    public final int create(final T entity) throws SQLException {
         return getDAO().create(entity);
     }
 
     @Override
-    public int update(T entity) throws SQLException {
+    public final int update(final T entity) throws SQLException {
         return getDAO().update(entity);
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         return getDAO().delete(id);
     }
 

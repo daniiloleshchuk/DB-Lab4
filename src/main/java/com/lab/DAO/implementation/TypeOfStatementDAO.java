@@ -1,14 +1,18 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.TypeOfStatement;
 import com.lab.persistance.ConnectionManager;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, Integer> {
+public class TypeOfStatementDAO implements IGeneralDAO<TypeOfStatement, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.type_of_statement";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.type_of_statement WHERE id=?";
@@ -17,7 +21,7 @@ public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, 
     private static final String DELETE = "DELETE FROM oleshchuk_db.type_of_statement WHERE id=?";
 
     @Override
-    public List<TypeOfStatement> getAll() throws SQLException {
+    public final List<TypeOfStatement> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<TypeOfStatement> typeOfStatements = new LinkedList<>();
 
@@ -34,7 +38,7 @@ public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, 
     }
 
     @Override
-    public TypeOfStatement getById(Integer id) throws SQLException {
+    public final TypeOfStatement getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         TypeOfStatement typeOfStatement = null;
 
@@ -53,7 +57,7 @@ public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, 
     }
 
     @Override
-    public int create(TypeOfStatement entity) throws SQLException {
+    public final int create(final TypeOfStatement entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -63,7 +67,7 @@ public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, 
     }
 
     @Override
-    public int update(TypeOfStatement entity) throws SQLException {
+    public final int update(final TypeOfStatement entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setString(1, entity.getName());
@@ -73,7 +77,7 @@ public class TypeOfStatementDAO implements GeneralDAOInterface<TypeOfStatement, 
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);

@@ -6,11 +6,11 @@ import com.lab.service.implementation.ResponsibleEmployeeService;
 
 public class ResponsibleEmployeeController extends GeneralController<ResponsibleEmployee> {
 
-    public static ResponsibleEmployeeService responsibleEmployeeService = new ResponsibleEmployeeService();
+    private static final ResponsibleEmployeeService RESPONSIBLE_EMPLOYEE_SERVICE = new ResponsibleEmployeeService();
 
 
     @Override
-    public GeneralService<ResponsibleEmployee> getService() {
-        return responsibleEmployeeService;
+    public final GeneralService<ResponsibleEmployee> getService() {
+        return RESPONSIBLE_EMPLOYEE_SERVICE;
     }
 }

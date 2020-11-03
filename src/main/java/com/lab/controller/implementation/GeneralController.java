@@ -1,39 +1,39 @@
 package com.lab.controller.implementation;
 
-import com.lab.controller.GeneralControllerInterface;
+import com.lab.controller.IGeneralController;
 import com.lab.service.implementation.GeneralService;
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
 import java.sql.SQLException;
 import java.util.List;
 
-public abstract class GeneralController<T extends GeneralModelInterface> implements GeneralControllerInterface<T> {
+public abstract class GeneralController<T extends IGeneralModel> implements IGeneralController<T> {
 
     @Override
     public abstract GeneralService<T> getService();
 
     @Override
-    public void create(T entity) throws SQLException {
+    public final void create(final T entity) throws SQLException {
         getService().create(entity);
         System.out.println("Entity has been created now");
         System.out.println(entity);
     }
 
     @Override
-    public void update(T entity) throws SQLException {
+    public final void update(final T entity) throws SQLException {
         getService().update(entity);
         System.out.println("Entity has been updated now");
         System.out.println(entity.getId());
     }
 
     @Override
-    public void delete(int id) throws SQLException {
+    public final void delete(final int id) throws SQLException {
         getService().delete(id);
         System.out.println("Entity has been deleted now");
     }
 
     @Override
-    public void getAll() throws SQLException {
+    public final void getAll() throws SQLException {
         List<T> ts =  getService().getAll();
         for (T t: ts) {
             System.out.println(t);
@@ -41,7 +41,7 @@ public abstract class GeneralController<T extends GeneralModelInterface> impleme
     }
 
     @Override
-    public void getById(int id) throws SQLException {
+    public final void getById(final int id) throws SQLException {
         T t = getService().getById(id);
         if (t != null) {
             System.out.println("Entity with id " + id + " found");

@@ -1,59 +1,60 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class EquipmentLocation implements GeneralModelInterface {
+public class EquipmentLocation implements IGeneralModel {
     private Integer id;
     private String office;
     private Integer roomNumber;
     private Integer workingPlaceNumber;
 
-    public EquipmentLocation(Integer id, String office, Integer roomNumber, Integer workingPlaceNumber) {
+    public EquipmentLocation(final Integer id, final String office, final Integer roomNumber,
+                             final Integer workingPlaceNumber) {
         this.id = id;
         this.office = office;
         this.roomNumber = roomNumber;
         this.workingPlaceNumber = workingPlaceNumber;
     }
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(Integer id) {
         this.id = id;
     }
 
-    public String getOffice() {
+    public final String getOffice() {
         return office;
     }
 
-    public void setOffice(String office) {
+    public final void setOffice(String office) {
         this.office = office;
     }
 
-    public Integer getRoomNumber() {
+    public final Integer getRoomNumber() {
         return roomNumber;
     }
 
-    public void setRoomNumber(Integer roomNumber) {
+    public final void setRoomNumber(final Integer roomNumber) {
         this.roomNumber = roomNumber;
     }
 
-    public Integer getWorkingPlaceNumber() {
+    public final Integer getWorkingPlaceNumber() {
         return workingPlaceNumber;
     }
 
-    public void setWorkingPlaceNumber(Integer workingPlaceNumber) {
+    public final void setWorkingPlaceNumber(final Integer workingPlaceNumber) {
         this.workingPlaceNumber = workingPlaceNumber;
     }
 
     @Override
-    public String toString() {
-        return "EquipmentLocation{" +
-                "id=" + id +
-                ", office='" + office + '\'' +
-                ", roomNumber=" + roomNumber +
-                ", workingPlaceNumber=" + workingPlaceNumber +
-                '}';
+    public final String toString() {
+        return "EquipmentLocation{"
+                + "id=" + id
+                + ", office='" + office + '\''
+                + ", roomNumber=" + roomNumber
+                + ", workingPlaceNumber=" + workingPlaceNumber
+                + '}';
     }
 }

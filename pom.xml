@@ -71,7 +71,6 @@
             </plugin>
         </plugins>
     </reporting>
-
     <dependencies>
         <dependency>
             <groupId>mysql</groupId>

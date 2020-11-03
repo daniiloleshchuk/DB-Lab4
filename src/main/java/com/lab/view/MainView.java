@@ -21,7 +21,7 @@ public class MainView {
 
     private final Map<String, String> menu;
     private final Map<String, Printable> methodsMenu;
-    private static final Scanner input = new Scanner(System.in);
+    private static final Scanner INPUT = new Scanner(System.in);
 
     public MainView() {
         menu = new LinkedHashMap<>();
@@ -146,39 +146,39 @@ public class MainView {
     }
     private void getEmployeeById() throws SQLException {
         System.out.println("Enter ID for Employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         employeeController.getById(id);
     }
     private void createEmployee() throws SQLException {
         System.out.println("Enter new employee name: ");
-        String name = input.nextLine();
+        String name = INPUT.nextLine();
         System.out.println("Enter new employee surname: ");
-        String surname = input.nextLine();
+        String surname = INPUT.nextLine();
         System.out.println("Enter new employee workingPositionId: ");
-        int workingPositionId = input.nextInt();
-        input.nextLine();
+        int workingPositionId = INPUT.nextInt();
+        INPUT.nextLine();
         Employee entity = new Employee(0, name, surname, workingPositionId);
         employeeController.create(entity);
     }
     private void deleteEmployeeById() throws SQLException {
         System.out.println("Enter ID to delete Employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         employeeController.delete(id);
     }
     private void updateEmployeeById() throws SQLException {
         System.out.println("Enter employee id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         Employee oldEmployee = employeeController.getService().getById(id);
         System.out.println("Enter new name for employee: ");
-        String name = input.nextLine();
+        String name = INPUT.nextLine();
         System.out.println("Enter new surname for employee: ");
-        String surname = input.nextLine();
+        String surname = INPUT.nextLine();
         System.out.println("Enter new working position id for employee: ");
-        int workingPositionId = input.nextInt();
-        input.nextLine();
+        int workingPositionId = INPUT.nextInt();
+        INPUT.nextLine();
 
         String newName = name;
         String newSurame = surname;
@@ -198,39 +198,39 @@ public class MainView {
     }
     private void getEquipmentLocationById() throws SQLException {
         System.out.println("Enter ID for Equipment Location: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         equipmentLocationController.getById(id);
     }
     private void createEquipmentLocation() throws SQLException {
         System.out.println("Enter new office: ");
-        String office = input.nextLine();
+        String office = INPUT.nextLine();
         System.out.println("Input new room number: ");
-        Integer roomNumber = input.nextInt();
+        Integer roomNumber = INPUT.nextInt();
         System.out.println("Enter new working place number: ");
-        Integer workingPositionId = input.nextInt();
-        input.nextLine();
+        Integer workingPositionId = INPUT.nextInt();
+        INPUT.nextLine();
         EquipmentLocation entity = new EquipmentLocation(0, office, roomNumber, workingPositionId);
         equipmentLocationController.create(entity);
     }
     private void deleteEquipmentLocationById() throws SQLException {
         System.out.println("Enter ID to delete Equipment Location: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         equipmentLocationController.delete(id);
     }
     private void updateEquipmentLocationById() throws SQLException {
         System.out.println("Enter Equipment Location id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         EquipmentLocation oldEquipmentLocation = equipmentLocationController.getService().getById(id);
         System.out.println("Enter new office: ");
-        String office = input.nextLine();
+        String office = INPUT.nextLine();
         System.out.println("Enter new room number: ");
-        int roomNumber = input.nextInt();
+        int roomNumber = INPUT.nextInt();
         System.out.println("Enter new working place number: ");
-        int workingPlaceNumber = input.nextInt();
-        input.nextLine();
+        int workingPlaceNumber = INPUT.nextInt();
+        INPUT.nextLine();
 
         String newOffice = office;
         Integer newRoomNumber = roomNumber;
@@ -250,31 +250,31 @@ public class MainView {
     }
     private void getInitiatingEmployeeById() throws SQLException {
         System.out.println("Enter ID for Initiating Employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         initiatingEmployeeController.getById(id);
     }
     private void createInitiatingEmployee() throws SQLException {
         System.out.println("Enter new employee ID: ");
-        Integer employeeId = input.nextInt();
-        input.nextLine();
+        Integer employeeId = INPUT.nextInt();
+        INPUT.nextLine();
         InitiatingEmployee entity = new InitiatingEmployee(0, employeeId);
         initiatingEmployeeController.create(entity);
     }
     private void deleteInitiatingEmployeeById() throws SQLException {
         System.out.println("Enter ID to delete Initiating Employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         initiatingEmployeeController.delete(id);
     }
     private void updateInitiatingEmployeeById() throws SQLException {
         System.out.println("Enter Initiating Employee id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         InitiatingEmployee oldInitiatingEmployee = initiatingEmployeeController.getService().getById(id);
         System.out.println("Enter new employee id: ");
-        int employeeId = input.nextInt();
-        input.nextLine();
+        int employeeId = INPUT.nextInt();
+        INPUT.nextLine();
 
         Integer newEmployeeId = employeeId;
         if (employeeId < 0) newEmployeeId = oldInitiatingEmployee.getEmployeeId();
@@ -289,31 +289,31 @@ public class MainView {
     }
     private void getPriorityById() throws SQLException {
         System.out.println("Enter ID for priority: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         priorityController.getById(id);
     }
     private void createPriority() throws SQLException {
         System.out.println("Enter new level: ");
-        String level = input.nextLine();
-        input.nextLine();
+        String level = INPUT.nextLine();
+        INPUT.nextLine();
         Priority entity = new Priority(0, level);
         priorityController.create(entity);
     }
     private void deletePriorityById() throws SQLException {
         System.out.println("Enter ID to delete Priority: ");
-        int id = input.nextInt();
-        input.nextLine();
-        initiatingEmployeeController.delete(id);
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
+        priorityController.delete(id);
     }
     private void updatePriorityById() throws SQLException {
         System.out.println("Enter priority id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         Priority oldPriority = priorityController.getService().getById(id);
         System.out.println("Enter new level: ");
-        String level = input.nextLine();
-        input.nextLine();
+        String level = INPUT.nextLine();
+        INPUT.nextLine();
 
         String newLevel = level;
         if (level.equals("")) newLevel = oldPriority.getLevel();
@@ -328,31 +328,31 @@ public class MainView {
     }
     private void getResponsibleEmployeeById() throws SQLException {
         System.out.println("Enter ID for responsible employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         responsibleEmployeeController.getById(id);
     }
     private void createResponsibleEmployee() throws SQLException {
         System.out.println("Enter new employee ID: ");
-        Integer employeeId = input.nextInt();
-        input.nextLine();
+        Integer employeeId = INPUT.nextInt();
+        INPUT.nextLine();
         ResponsibleEmployee entity = new ResponsibleEmployee(0, employeeId);
         responsibleEmployeeController.create(entity);
     }
     private void deleteResponsibleEmployeeById() throws SQLException {
         System.out.println("Enter ID to delete responsible employee: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         responsibleEmployeeController.delete(id);
     }
     private void updateResponsibleEmployeeById() throws SQLException {
         System.out.println("Enter responsible employee id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         ResponsibleEmployee oldResponsibleEmployee = responsibleEmployeeController.getService().getById(id);
         System.out.println("Enter new employee id: ");
-        int employeeId = input.nextInt();
-        input.nextLine();
+        int employeeId = INPUT.nextInt();
+        INPUT.nextLine();
 
         Integer newEmployeeId = employeeId;
         if (employeeId < 0) newEmployeeId = oldResponsibleEmployee.getEmployeeId();
@@ -367,28 +367,28 @@ public class MainView {
     }
     private void getStatementById() throws SQLException {
         System.out.println("Enter ID for Statement: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         statementController.getById(id);
     }
     private void createStatement() throws SQLException {
 
         System.out.println("Enter new statement description: ");
-        String description = input.nextLine();
+        String description = INPUT.nextLine();
         System.out.println("Enter new statement initiating employee id: ");
-        Integer initiatingEmployeeId = input.nextInt();
+        Integer initiatingEmployeeId = INPUT.nextInt();
         System.out.println("Enter new statement equipment location id: ");
-        Integer equipmentLocationId = input.nextInt();
+        Integer equipmentLocationId = INPUT.nextInt();
         System.out.println("Enter new statement status id: ");
-        Integer statusId = input.nextInt();
+        Integer statusId = INPUT.nextInt();
         System.out.println("Enter new statement priority id: ");
-        Integer priorityId = input.nextInt();
+        Integer priorityId = INPUT.nextInt();
         System.out.println("Enter new statement responsible employee: ");
-        Integer responsibleEmployeeId = input.nextInt();
+        Integer responsibleEmployeeId = INPUT.nextInt();
         System.out.println("Enter new statement type of statement: ");
-        Integer typeOfStatementId = input.nextInt();
+        Integer typeOfStatementId = INPUT.nextInt();
 
-        input.nextLine();
+        INPUT.nextLine();
 
         Statement entity = new Statement(0, description, initiatingEmployeeId, equipmentLocationId, statusId,
                 priorityId, responsibleEmployeeId, typeOfStatementId);
@@ -396,30 +396,30 @@ public class MainView {
     }
     private void deleteStatementById() throws SQLException {
         System.out.println("Enter ID to delete statement: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         statementController.delete(id);
     }
     private void updateStatementById() throws SQLException {
         System.out.println("Enter statement id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         Statement oldStatement = statementController.getService().getById(id);
         System.out.println("Enter new description id: ");
-        String description = input.nextLine();
+        String description = INPUT.nextLine();
         System.out.println("Enter new initiating employee id: ");
-        int initiatingEmployeeId = input.nextInt();
+        int initiatingEmployeeId = INPUT.nextInt();
         System.out.println("Enter new equipment location id");
-        int equipmentLocationId = input.nextInt();
+        int equipmentLocationId = INPUT.nextInt();
         System.out.println("Enter new status id");
-        int statusId = input.nextInt();
+        int statusId = INPUT.nextInt();
         System.out.println("Enter new priority id");
-        int priorityId = input.nextInt();
+        int priorityId = INPUT.nextInt();
         System.out.println("Enter new responsible employee id");
-        int responsibleEmployeeId = input.nextInt();
+        int responsibleEmployeeId = INPUT.nextInt();
         System.out.println("Enter new type of statement id");
-        int typeOfStatementId = input.nextInt();
-        input.nextLine();
+        int typeOfStatementId = INPUT.nextInt();
+        INPUT.nextLine();
 
         String newDescription = description;
         int newInitiatingEmployeeId = initiatingEmployeeId;
@@ -449,31 +449,31 @@ public class MainView {
     }
     private void getStatusById() throws SQLException {
         System.out.println("Enter ID for status: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         statusController.getById(id);
     }
     private void createStatus() throws SQLException {
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        //input.nextLine();
         Status entity = new Status(0, name);
         statusController.create(entity);
     }
     private void deleteStatusById() throws SQLException {
         System.out.println("Enter ID to delete status: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         statusController.delete(id);
     }
     private void updateStatusById() throws SQLException {
         System.out.println("Enter status id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         Status oldStatus = statusController.getService().getById(id);
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        INPUT.nextLine();
 
         String newName = name;
         if (name.equals("")) newName = oldStatus.getName();
@@ -488,31 +488,31 @@ public class MainView {
     }
     private void getTypeOfStatementById() throws SQLException {
         System.out.println("Enter ID for typeOfStatement: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         typeOfStatementController.getById(id);
     }
     private void createTypeOfStatement() throws SQLException {
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        INPUT.nextLine();
         TypeOfStatement entity = new TypeOfStatement(0, name);
         typeOfStatementController.create(entity);
     }
     private void deleteTypeOfStatementById() throws SQLException {
         System.out.println("Enter ID to delete type of statement: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         typeOfStatementController.delete(id);
     }
     private void updateTypeOfStatementById() throws SQLException {
         System.out.println("Enter type of statement id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         TypeOfStatement oldTypeOfStatement = typeOfStatementController.getService().getById(id);
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        INPUT.nextLine();
 
         String newName = name;
         if (name.equals("")) newName = oldTypeOfStatement.getName();
@@ -527,31 +527,31 @@ public class MainView {
     }
     private void getWorkingPositionById() throws SQLException {
         System.out.println("Enter ID for working position: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         workingPositionController.getById(id);
     }
     private void createWorkingPosition() throws SQLException {
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        INPUT.nextLine();
         WorkingPosition entity = new WorkingPosition(0, name);
         workingPositionController.create(entity);
     }
     private void deleteWorkingPositionById() throws SQLException {
         System.out.println("Enter ID to delete working position: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         workingPositionController.delete(id);
     }
     private void updateWorkingPositionById() throws SQLException {
         System.out.println("Enter working position id to update: ");
-        int id = input.nextInt();
-        input.nextLine();
+        int id = INPUT.nextInt();
+        INPUT.nextLine();
         WorkingPosition oldWorkingPosition = workingPositionController.getService().getById(id);
         System.out.println("Enter new name: ");
-        String name = input.nextLine();
-        input.nextLine();
+        String name = INPUT.nextLine();
+        INPUT.nextLine();
 
         String newName = name;
         if (name.equals("")) newName = oldWorkingPosition.getName();
@@ -562,21 +562,21 @@ public class MainView {
 
 
 
-    private void outputMenu() {
+    private final void outputMenu() {
         System.out.println("\nMENU:");
         for (String str : menu.values()) {
             System.out.println(str);
         }
     }
-    public void show() {
+    public final void show() {
         String keyMenu;
         do {
             outputMenu();
             System.out.println("Please, select menu point.");
-            keyMenu = input.nextLine().toUpperCase();
+            keyMenu = INPUT.nextLine().toUpperCase();
             try {
                 methodsMenu.get(keyMenu).print();
-            } catch (Exception ignored) {}
+            } catch (Exception ignored) { }
         } while (!keyMenu.equals("Q"));
     }
 }

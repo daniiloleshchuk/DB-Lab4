@@ -1,37 +1,37 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class Priority implements GeneralModelInterface {
+public class Priority implements IGeneralModel {
     private Integer id;
     private String level;
 
-    public Priority(Integer id, String level) {
+    public Priority(final Integer id, final String level) {
         this.id = id;
         this.level = level;
     }
 
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public String getLevel() {
+    public final String getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public final void setLevel(final String level) {
         this.level = level;
     }
 
     @Override
-    public String toString() {
-        return "Priority{" +
-                "id=" + id +
-                ", level='" + level + '\'' +
-                '}';
+    public final String toString() {
+        return "Priority{"
+                + "id=" + id
+                + ", level='" + level + '\''
+                + '}';
     }
 }

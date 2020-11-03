@@ -1,30 +1,38 @@
 package com.lab.model.implementation;
 
-import com.lab.model.GeneralModelInterface;
+import com.lab.model.IGeneralModel;
 
-public class Status implements GeneralModelInterface {
+public class Status implements IGeneralModel {
     private Integer id;
     private String name;
 
+    public Status(final Integer id, final String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     @Override
-    public Integer getId() {
+    public final Integer getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public final void setId(final Integer id) {
         this.id = id;
     }
 
-    public String getName() {
+    public final String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    public final void setName(final String name) {
         this.name = name;
     }
 
-    public Status(Integer id, String name) {
-        this.id = id;
-        this.name = name;
+    @Override
+    public final String toString() {
+        return "Status{"
+                + "id=" + id
+                + ", name='" + name + '\''
+                + '}';
     }
 }

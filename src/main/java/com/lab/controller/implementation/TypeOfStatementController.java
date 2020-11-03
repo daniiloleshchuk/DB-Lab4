@@ -6,10 +6,10 @@ import com.lab.service.implementation.TypeOfStatementService;
 
 public class TypeOfStatementController extends GeneralController<TypeOfStatement> {
 
-    public static TypeOfStatementService typeOfStatementService = new TypeOfStatementService();
+    private static final TypeOfStatementService TYPE_OF_STATEMENT_SERVICE = new TypeOfStatementService();
 
     @Override
-    public GeneralService<TypeOfStatement> getService() {
-        return typeOfStatementService;
+    public  final GeneralService<TypeOfStatement> getService() {
+        return TYPE_OF_STATEMENT_SERVICE;
     }
 }

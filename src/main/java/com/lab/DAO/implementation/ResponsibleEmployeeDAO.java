@@ -1,15 +1,18 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
-import com.lab.model.implementation.InitiatingEmployee;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.ResponsibleEmployee;
 import com.lab.persistance.ConnectionManager;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEmployee, Integer> {
+public class ResponsibleEmployeeDAO implements IGeneralDAO<ResponsibleEmployee, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.responsible_employee";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.responsible_employee WHERE id=?";
@@ -18,7 +21,7 @@ public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEm
     private static final String DELETE = "DELETE FROM oleshchuk_db.responsible_employee WHERE id=?";
 
     @Override
-    public List<ResponsibleEmployee> getAll() throws SQLException {
+    public final List<ResponsibleEmployee> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<ResponsibleEmployee> responsibleEmployees = new LinkedList<>();
 
@@ -35,7 +38,7 @@ public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEm
     }
 
     @Override
-    public ResponsibleEmployee getById(Integer id) throws SQLException {
+    public final ResponsibleEmployee getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         ResponsibleEmployee responsibleEmployee = null;
 
@@ -54,7 +57,7 @@ public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEm
     }
 
     @Override
-    public int create(ResponsibleEmployee entity) throws SQLException {
+    public final int create(final ResponsibleEmployee entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -64,7 +67,7 @@ public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEm
     }
 
     @Override
-    public int update(ResponsibleEmployee entity) throws SQLException {
+    public final int update(final ResponsibleEmployee entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setInt(1, entity.getEmployeeId());
@@ -74,7 +77,7 @@ public class ResponsibleEmployeeDAO implements GeneralDAOInterface<ResponsibleEm
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);

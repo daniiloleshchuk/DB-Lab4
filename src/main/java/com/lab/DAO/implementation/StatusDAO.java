@@ -1,14 +1,18 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.Status;
 import com.lab.persistance.ConnectionManager;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
+public class StatusDAO implements IGeneralDAO<Status, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.status";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.status WHERE id=?";
@@ -17,7 +21,7 @@ public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
     private static final String DELETE = "DELETE FROM oleshchuk_db.status WHERE id=?";
 
     @Override
-    public List<Status> getAll() throws SQLException {
+    public final List<Status> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<Status> statuses = new LinkedList<>();
 
@@ -34,7 +38,7 @@ public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
     }
 
     @Override
-    public Status getById(Integer id) throws SQLException {
+    public final Status getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         Status status = null;
 
@@ -53,7 +57,7 @@ public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
     }
 
     @Override
-    public int create(Status entity) throws SQLException {
+    public final int create(final Status entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -63,7 +67,7 @@ public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
     }
 
     @Override
-    public int update(Status entity) throws SQLException {
+    public final int update(final Status entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setString(1, entity.getName());
@@ -73,7 +77,7 @@ public class StatusDAO implements GeneralDAOInterface<Status, Integer> {
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);

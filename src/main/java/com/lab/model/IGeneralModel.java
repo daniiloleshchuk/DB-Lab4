@@ -1,5 +1,5 @@
 package com.lab.model;
 
-public interface GeneralModelInterface {
+public interface IGeneralModel {
     Integer getId();
 }

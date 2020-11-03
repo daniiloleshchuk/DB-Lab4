@@ -1,14 +1,18 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.WorkingPosition;
 import com.lab.persistance.ConnectionManager;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, Integer>  {
+public class WorkingPositionDAO implements IGeneralDAO<WorkingPosition, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.working_position";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.working_position WHERE id=?";
@@ -17,7 +21,7 @@ public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, 
     private static final String DELETE = "DELETE FROM oleshchuk_db.working_position WHERE id=?";
 
     @Override
-    public List<WorkingPosition> getAll() throws SQLException {
+    public final List<WorkingPosition> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<WorkingPosition> workingPositions = new LinkedList<>();
 
@@ -34,7 +38,7 @@ public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, 
     }
 
     @Override
-    public WorkingPosition getById(Integer id) throws SQLException {
+    public final WorkingPosition getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         WorkingPosition workingPosition = null;
 
@@ -53,7 +57,7 @@ public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, 
     }
 
     @Override
-    public int create(WorkingPosition entity) throws SQLException {
+    public final int create(final WorkingPosition entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -63,7 +67,7 @@ public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, 
     }
 
     @Override
-    public int update(WorkingPosition entity) throws SQLException {
+    public final int update(final WorkingPosition entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setString(1, entity.getName());
@@ -73,7 +77,7 @@ public class WorkingPositionDAO implements GeneralDAOInterface<WorkingPosition, 
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);

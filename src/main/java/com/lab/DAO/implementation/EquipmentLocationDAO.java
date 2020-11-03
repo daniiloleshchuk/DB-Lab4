@@ -1,23 +1,29 @@
 package com.lab.DAO.implementation;
 
-import com.lab.DAO.GeneralDAOInterface;
+import com.lab.DAO.IGeneralDAO;
 import com.lab.model.implementation.EquipmentLocation;
 import com.lab.persistance.ConnectionManager;
 
-import java.sql.*;
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.PreparedStatement;
 import java.util.LinkedList;
 import java.util.List;
 
-public class EquipmentLocationDAO implements GeneralDAOInterface<EquipmentLocation, Integer> {
+public class EquipmentLocationDAO implements IGeneralDAO<EquipmentLocation, Integer> {
 
     private static final String GET_ALL = "SELECT * FROM oleshchuk_db.equipment_location";
     private static final String GET_BY_ID = "SELECT * FROM oleshchuk_db.equipment_location WHERE id=?";
-    private static final String CREATE = "INSERT oleshchuk_db.equipment_location (id, office, room_number, working_place_number) VALUES (?, ?, ?, ?)";
-    private static final String UPDATE = "UPDATE oleshchuk_db.equipment_location SET office=?, room_number=?, working_place_number=? WHERE id=?";
+    private static final String CREATE = "INSERT oleshchuk_db.equipment_location "
+            + "(id, office, room_number, working_place_number) VALUES (?, ?, ?, ?)";
+    private static final String UPDATE = "UPDATE oleshchuk_db.equipment_location "
+            + "SET office=?, room_number=?, working_place_number=? WHERE id=?";
     private static final String DELETE = "DELETE FROM oleshchuk_db.employee WHERE id=?";
 
     @Override
-    public List<EquipmentLocation> getAll() throws SQLException {
+    public final List<EquipmentLocation> getAll() throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         List<EquipmentLocation> equipmentLocations = new LinkedList<>();
 
@@ -36,7 +42,7 @@ public class EquipmentLocationDAO implements GeneralDAOInterface<EquipmentLocati
     }
 
     @Override
-    public EquipmentLocation getById(Integer id) throws SQLException {
+    public final EquipmentLocation getById(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         EquipmentLocation equipmentLocation = null;
 
@@ -57,7 +63,7 @@ public class EquipmentLocationDAO implements GeneralDAOInterface<EquipmentLocati
     }
 
     @Override
-    public int create(EquipmentLocation entity) throws SQLException {
+    public final int create(final EquipmentLocation entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(CREATE)) {
             ps.setInt(1, entity.getId());
@@ -69,7 +75,7 @@ public class EquipmentLocationDAO implements GeneralDAOInterface<EquipmentLocati
     }
 
     @Override
-    public int update(EquipmentLocation entity) throws SQLException {
+    public final int update(final EquipmentLocation entity) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(UPDATE)) {
             ps.setString(1, entity.getOffice());
@@ -81,7 +87,7 @@ public class EquipmentLocationDAO implements GeneralDAOInterface<EquipmentLocati
     }
 
     @Override
-    public int delete(Integer id) throws SQLException {
+    public final int delete(final Integer id) throws SQLException {
         Connection connection = ConnectionManager.getConnection();
         try (PreparedStatement ps = connection.prepareStatement(DELETE)) {
             ps.setInt(1, id);
